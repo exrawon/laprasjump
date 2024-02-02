@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			y: [],
 			match: '',
 		},
-		tolerance = 100;
+		tolerance = 200;
 
 	var surface = document.getElementById('surface');
 
@@ -57,11 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			yTravel = gesture.y[gesture.y.length - 1] - gesture.y[0];
 		if (xTravel < tolerance && xTravel > -tolerance && yTravel < -tolerance) {
 			gesture.match = 'Swiped Up';
-			moveStraight();
 		}
 		if (xTravel < tolerance && xTravel > -tolerance && yTravel > tolerance) {
 			gesture.match = 'Swiped Down';
-			moveStraight();
 		}
 		if (yTravel < tolerance && yTravel > -tolerance && xTravel < -tolerance) {
 			gesture.match = 'Swiped Left';
@@ -72,9 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			moveRight();
 		}
 
-		setTimeout(function () {
-			output.style.opacity = 1;
-		}, 500);
 		gesture.x = [];
 		gesture.y = [];
 		gesture.match = xTravel = yTravel = '';
@@ -83,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			dots[i].style.opacity = 1;
 			setTimeout(function () {
 				document.body.removeChild(dots[i]);
-			}, 1000);
+			}, 100); //here
 		}
 	});
 
@@ -290,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 	grid.innerHTML =
-		'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.1</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
+		'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.2</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
 	document.addEventListener('keydown', control);
 	banner.addEventListener('click', start);
 
