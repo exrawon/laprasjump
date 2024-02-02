@@ -45,7 +45,6 @@ body {
 	width: 100px;
 	background-image: url(./assets/sand.jpg);
 	object-fit: scale-down;
-	/* background-color: #fcca66; */
 	position: absolute;
 }
 
@@ -130,9 +129,8 @@ body {
 .new {
 	color: red;
 	font-size: 15px;
-	font-weight: 400;
+	font-weight: 1000;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	/* transform: rotate(-5deg); */
 	animation: fadein 1s ease-out alternate infinite;
 }
 

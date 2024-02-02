@@ -56,20 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		var dots = document.querySelectorAll('em'),
 			xTravel = gesture.x[gesture.x.length - 1] - gesture.x[0],
 			yTravel = gesture.y[gesture.y.length - 1] - gesture.y[0];
-		// if (xTravel < tolerance && xTravel > -tolerance && yTravel < -tolerance) {
-		// 	gesture.match = 'Swiped Up';
-		// }
-		// if (xTravel < tolerance && xTravel > -tolerance && yTravel > tolerance) {
-		// 	gesture.match = 'Swiped Down';
-		// }
-		// if (yTravel < tolerance && yTravel > -tolerance && xTravel < -tolerance) {
-		// 	gesture.match = 'Swiped Left';
-		// 	moveLeft();
-		// }
-		// if (yTravel < tolerance && yTravel > -tolerance && xTravel > tolerance) {
-		// 	gesture.match = 'Swiped Right';
-		// 	moveRight();
-		// }
+
 		if (xTravel < -tolerance) {
 			moveLeft();
 		}
@@ -253,7 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		isGameOver = true;
 		banner.classList.add('clickable');
 		banner.classList.remove('disabled');
-		// banner.innerText = `🎮\u00A0\u00A0PLAY AGAIN\u00A0\u00A0🎮`;
 		banner.innerText = `PLAY AGAIN`;
 		while (grid.firstChild) {
 			grid.removeChild(grid.firstChild);
@@ -296,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 	grid.innerHTML =
-		'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.3a</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
+		'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.3b</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
 	document.addEventListener('keydown', control);
 	banner.addEventListener('click', start);
 	const titleImg = document.querySelector('.title-img');
