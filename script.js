@@ -19,6 +19,76 @@ document.addEventListener('DOMContentLoaded', () => {
 	let rightTimerId;
 	let movePlatformId;
 
+	//for touchscreen start
+	var gesture = {
+			x: [],
+			y: [],
+			match: '',
+		},
+		tolerance = 100;
+
+	var surface = document.getElementById('surface');
+
+	surface.addEventListener('touchstart', function (e) {
+		e.preventDefault();
+		for (i = 0; i < e.touches.length; i++) {
+			var dot = document.createElement('em');
+			dot.id = i;
+			dot.style.top = e.touches[i].clientY - 25 + 'px';
+			dot.style.left = e.touches[i].clientX - 25 + 'px';
+			document.body.appendChild(dot);
+			gesture.x.push(e.touches[i].clientX);
+			gesture.y.push(e.touches[i].clientY);
+		}
+	});
+	surface.addEventListener('touchmove', function (e) {
+		e.preventDefault();
+		for (var i = 0; i < e.touches.length; i++) {
+			var dot = document.getElementById(i);
+			dot.style.top = e.touches[i].clientY - 25 + 'px';
+			dot.style.left = e.touches[i].clientX - 25 + 'px';
+			gesture.x.push(e.touches[i].clientX);
+			gesture.y.push(e.touches[i].clientY);
+		}
+	});
+	surface.addEventListener('touchend', function (e) {
+		var dots = document.querySelectorAll('em'),
+			xTravel = gesture.x[gesture.x.length - 1] - gesture.x[0],
+			yTravel = gesture.y[gesture.y.length - 1] - gesture.y[0];
+		if (xTravel < tolerance && xTravel > -tolerance && yTravel < -tolerance) {
+			gesture.match = 'Swiped Up';
+			moveStraight();
+		}
+		if (xTravel < tolerance && xTravel > -tolerance && yTravel > tolerance) {
+			gesture.match = 'Swiped Down';
+			moveStraight();
+		}
+		if (yTravel < tolerance && yTravel > -tolerance && xTravel < -tolerance) {
+			gesture.match = 'Swiped Left';
+			moveLeft();
+		}
+		if (yTravel < tolerance && yTravel > -tolerance && xTravel > tolerance) {
+			gesture.match = 'Swiped Right';
+			moveRight();
+		}
+
+		setTimeout(function () {
+			output.style.opacity = 1;
+		}, 500);
+		gesture.x = [];
+		gesture.y = [];
+		gesture.match = xTravel = yTravel = '';
+		for (i = 0; i < dots.length; i++) {
+			dots[i].id = '';
+			dots[i].style.opacity = 1;
+			setTimeout(function () {
+				document.body.removeChild(dots[i]);
+			}, 1000);
+		}
+	});
+
+	//for touchscreen end
+
 	const playJump = () => {
 		let audio = new Audio('./assets/jump.mp3');
 		audio.play();
@@ -174,6 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 	function gameOver() {
+		surface.style.zIndex = -2
 		isGameOver = true;
 		banner.classList.add('clickable');
 		banner.classList.remove('disabled');
@@ -200,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	function start() {
+		surface.style.zIndex = 20
 		isGameOver = false;
 		if (!isGameOver) {
 			laprasLeftSpace = 50;
@@ -218,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 	grid.innerHTML =
-		'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.0</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
+		'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.1</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
 	document.addEventListener('keydown', control);
 	banner.addEventListener('click', start);
 

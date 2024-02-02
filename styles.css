@@ -6,7 +6,7 @@ body {
 	padding: 0;
 	margin: 0;
 	font-family: 'Poppins', sans-serif;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 .grid {
 	height: 600px;
@@ -15,6 +15,7 @@ body {
 	position: relative;
 	font-size: 60px;
 	text-align: center;
+	z-index: 20;
 	overflow: hidden;
 }
 
@@ -82,6 +83,7 @@ body {
 	object-fit: cover;
 	height: 200px;
 	width: 200px;
+	z-index: 20;
 }
 .version {
 	color: whitesmoke;
@@ -139,6 +141,7 @@ body {
 	width: 420px;
 	position: absolute;
 	top: 500px;
+	z-index: 10;
 }
 
 .water {
@@ -149,5 +152,16 @@ body {
 	height: 100px;
 	color: whitesmoke;
 	font-size: 15px;
-	z-index: -10;
+	z-index: 11;
 }
+
+#surface{
+    width: 420px;
+    height: 855px;
+    background: red;
+	z-index: 0;
+	position: fixed;
+	top: 65px;
+	opacity: 0.5;
+}
+
