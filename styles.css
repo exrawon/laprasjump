@@ -1,3 +1,12 @@
+html {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+	touch-action: manipulation;
+}
 body {
 	display: flex;
 	justify-content: center;
@@ -154,13 +163,18 @@ body {
 	z-index: 10;
 }
 
-#surface{
-    width: 420px;
-    height: 855px;
-    background: red;
+#surface {
+	width: 420px;
+	height: 855px;
+	background: red;
 	z-index: -2;
 	position: fixed;
 	top: 65px;
 	opacity: 0;
 }
 
+@media (max-width: 480px) {
+	.water {
+		display: none;
+	}
+}

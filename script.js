@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			y: [],
 			match: '',
 		},
-		tolerance = 10;
+		tolerance = 20;
 
 	var surface = document.getElementById('surface');
 
@@ -55,17 +55,25 @@ document.addEventListener('DOMContentLoaded', () => {
 		var dots = document.querySelectorAll('em'),
 			xTravel = gesture.x[gesture.x.length - 1] - gesture.x[0],
 			yTravel = gesture.y[gesture.y.length - 1] - gesture.y[0];
-		if (xTravel < tolerance && xTravel > -tolerance && yTravel < -tolerance) {
-			gesture.match = 'Swiped Up';
-		}
-		if (xTravel < tolerance && xTravel > -tolerance && yTravel > tolerance) {
-			gesture.match = 'Swiped Down';
-		}
-		if (yTravel < tolerance && yTravel > -tolerance && xTravel < -tolerance) {
+		// if (xTravel < tolerance && xTravel > -tolerance && yTravel < -tolerance) {
+		// 	gesture.match = 'Swiped Up';
+		// }
+		// if (xTravel < tolerance && xTravel > -tolerance && yTravel > tolerance) {
+		// 	gesture.match = 'Swiped Down';
+		// }
+		// if (yTravel < tolerance && yTravel > -tolerance && xTravel < -tolerance) {
+		// 	gesture.match = 'Swiped Left';
+		// 	moveLeft();
+		// }
+		// if (yTravel < tolerance && yTravel > -tolerance && xTravel > tolerance) {
+		// 	gesture.match = 'Swiped Right';
+		// 	moveRight();
+		// }
+		if (xTravel < -tolerance) {
 			gesture.match = 'Swiped Left';
 			moveLeft();
 		}
-		if (yTravel < tolerance && yTravel > -tolerance && xTravel > tolerance) {
+		if (xTravel > tolerance) {
 			gesture.match = 'Swiped Right';
 			moveRight();
 		}
@@ -78,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			dots[i].style.opacity = 1;
 			setTimeout(function () {
 				document.body.removeChild(dots[i]);
-			}, 100); //here
+			}, 0);
 		}
 	});
 
@@ -239,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 	function gameOver() {
-		surface.style.zIndex = -2
+		surface.style.zIndex = -2;
 		isGameOver = true;
 		banner.classList.add('clickable');
 		banner.classList.remove('disabled');
@@ -266,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	function start() {
-		surface.style.zIndex = 20
+		surface.style.zIndex = 20;
 		isGameOver = false;
 		if (!isGameOver) {
 			laprasLeftSpace = 50;
@@ -285,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 	grid.innerHTML =
-		'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.2a</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
+		'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.2b</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
 	document.addEventListener('keydown', control);
 	banner.addEventListener('click', start);
 
