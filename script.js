@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			y: [],
 			match: '',
 		},
-		tolerance = 200;
+		tolerance = 10;
 
 	var surface = document.getElementById('surface');
 
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 	grid.innerHTML =
-		'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.2</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
+		'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.2a</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
 	document.addEventListener('keydown', control);
 	banner.addEventListener('click', start);
 
