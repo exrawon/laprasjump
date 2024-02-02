@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const grid = document.querySelector('.grid');
 	const lapras = document.createElement('div');
 	const banner = document.querySelector('.banner');
+	const waves = document.querySelector('.waves');
 
 	let isPlaying = false;
 	let isGameOver = true;
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	let score = 0;
 	let highScore = 0;
 	let laprasLeftSpace = 50;
-	let startPoint = 200;
+	let startPoint = 300;
 	let laprasBottomSpace = startPoint;
 	let isJumping = true;
 	let upTimerId;
@@ -70,11 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		// 	moveRight();
 		// }
 		if (xTravel < -tolerance) {
-			gesture.match = 'Swiped Left';
 			moveLeft();
 		}
 		if (xTravel > tolerance) {
-			gesture.match = 'Swiped Right';
 			moveRight();
 		}
 
@@ -131,9 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
 					platform.bottom -= 2;
 				} else if (score <= 50) {
 					platform.bottom -= 3;
-				} else if (score <= 150) {
+				} else if (score <= 100) {
 					platform.bottom -= 4;
-				} else platform.bottom -= 5;
+				} else if (score <= 200) {
+					platform.bottom -= 5;
+				} else platform.bottom -= 7;
 
 				let visual = platform.visual;
 				visual.style.bottom = platform.bottom + 'px';
@@ -176,7 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
 					laprasBottomSpace <= platform.bottom + 10 &&
 					laprasLeftSpace + 70 >= platform.left &&
 					laprasLeftSpace <= platform.left + 50 &&
-					!isJumping
+					!isJumping &&
+					laprasBottomSpace < 500
 				) {
 					startPoint = laprasBottomSpace;
 					jump();
@@ -251,7 +253,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		isGameOver = true;
 		banner.classList.add('clickable');
 		banner.classList.remove('disabled');
-		banner.innerText = `🎮\u00A0\u00A0PLAY AGAIN\u00A0\u00A0🎮`;
+		// banner.innerText = `🎮\u00A0\u00A0PLAY AGAIN\u00A0\u00A0🎮`;
+		banner.innerText = `PLAY AGAIN`;
 		while (grid.firstChild) {
 			grid.removeChild(grid.firstChild);
 		}
@@ -278,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		isGameOver = false;
 		if (!isGameOver) {
 			laprasLeftSpace = 50;
-			startPoint = 200;
+			startPoint = 300;
 			laprasBottomSpace = startPoint;
 			score = 0;
 			banner.classList.remove('clickable');
@@ -293,10 +296,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 	grid.innerHTML =
-		'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.2b</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
+		'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.3a</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
 	document.addEventListener('keydown', control);
 	banner.addEventListener('click', start);
-
 	const titleImg = document.querySelector('.title-img');
 	titleImg.addEventListener('click', playCry);
+	waves.addEventListener('click', () => {
+		if (isGameOver) {
+			start();
+		}
+	});
 });

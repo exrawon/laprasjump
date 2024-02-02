@@ -17,6 +17,7 @@ body {
 	font-family: 'Poppins', sans-serif;
 	overflow: hidden;
 }
+
 .grid {
 	height: 600px;
 	width: 420px;
@@ -145,6 +146,7 @@ body {
 }
 
 .waves {
+	cursor: pointer;
 	height: 320px;
 	width: 420px;
 	position: absolute;
@@ -153,11 +155,11 @@ body {
 }
 
 .water {
-	position: absolute;
-	bottom: 0;
+	cursor: pointer;
+	position: relative;
 	background-color: #8dd7f7;
 	width: 420px;
-	height: 100px;
+	height: 420px;
 	color: whitesmoke;
 	font-size: 15px;
 	z-index: 10;
