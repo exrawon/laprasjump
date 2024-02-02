@@ -1,0 +1,153 @@
+body {
+	display: flex;
+	justify-content: center;
+	background-color: #2b2d2f;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
+	overflow: hidden;
+}
+.grid {
+	height: 600px;
+	width: 420px;
+	background-image: url('./assets/background.gif');
+	position: relative;
+	font-size: 60px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.lapras {
+	/* border: red solid 2px; */
+	height: 114px;
+	width: 123px;
+	background-image: url('./assets/lapras.gif');
+	position: absolute;
+	z-index: 11;
+	transform: scale(1, 1);
+}
+
+.platform {
+	border-radius: 10px;
+	border: grey 5px outset;
+	height: 12px;
+	width: 100px;
+	background-image: url(./assets/sand.jpg);
+	object-fit: scale-down;
+	/* background-color: #fcca66; */
+	position: absolute;
+}
+
+.banner {
+	background-color: #152238;
+	width: 420px;
+	height: 35px;
+	color: whitesmoke;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	font-size: 22px;
+	padding: 15px 0;
+	font-weight: 900;
+}
+
+.disabled {
+	pointer-events: none;
+}
+.clickable {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	animation: fadein 1.5s ease-out alternate infinite;
+}
+.clickable:hover {
+	background-color: rgb(22, 44, 76);
+}
+
+.title {
+	opacity: 95%;
+	margin-top: 60px;
+
+	color: whitesmoke;
+}
+
+.title:hover {
+	opacity: 100%;
+}
+
+.title-img {
+	cursor: pointer;
+	object-fit: cover;
+	height: 200px;
+	width: 200px;
+}
+.version {
+	color: whitesmoke;
+	font-size: 20px;
+	margin-bottom: 40px;
+}
+.score {
+	font-family: 'Press Start 2P', system-ui;
+	font-weight: 400;
+	font-style: normal;
+	width: 420px;
+	height: 35px;
+	color: whitesmoke;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: 15px;
+	position: relative;
+	left: 100px;
+}
+
+.game-over {
+	opacity: 95%;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 60px;
+	margin-bottom: 40px;
+}
+
+.game-over:hover {
+	opacity: 100%;
+}
+.new {
+	color: red;
+	font-size: 15px;
+	font-weight: 400;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	/* transform: rotate(-5deg); */
+	animation: fadein 1s ease-out alternate infinite;
+}
+
+@keyframes fadein {
+	0% {
+		opacity: 0.1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.waves {
+	height: 320px;
+	width: 420px;
+	position: absolute;
+	top: 500px;
+}
+
+.water {
+	position: absolute;
+	bottom: 0;
+	background-color: #8dd7f7;
+	width: 420px;
+	height: 100px;
+	color: whitesmoke;
+	font-size: 15px;
+	z-index: -10;
+}
