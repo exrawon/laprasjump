@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	let score = 0;
 	let highScore = 0;
 	let laprasLeftSpace = 50;
-	let startPoint = 300;
+	let startPoint = 150;
 	let laprasBottomSpace = startPoint;
 	let isJumping = true;
 	let upTimerId;
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		isGameOver = false;
 		if (!isGameOver) {
 			laprasLeftSpace = 50;
-			startPoint = 300;
+			startPoint = 150;
 			laprasBottomSpace = startPoint;
 			score = 0;
 			banner.classList.remove('clickable');
