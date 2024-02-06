@@ -60,10 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			xTravel = gesture.x[gesture.x.length - 1] - gesture.x[0],
 			yTravel = gesture.y[gesture.y.length - 1] - gesture.y[0];
 
-		if (xTravel < -tolerance) {
+		if (xTravel < -tolerance && isPlaying) {
 			moveLeft();
 		}
-		if (xTravel > tolerance) {
+		if (xTravel > tolerance && isPlaying) {
 			moveRight();
 		}
 
@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function initialize() {
 		grid.innerHTML =
-			'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.5</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
+			'<div class="title"a>Lapras Jump</div><div class="version">ver. 1.5a</div><img class= "title-img" src="./assets/lapras.gif" alt="">';
 		const titleImg = document.querySelector('.title-img');
 		titleImg.addEventListener('click', playCry);
 		document.addEventListener('keydown', control);
